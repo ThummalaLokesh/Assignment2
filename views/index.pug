@@ -1,5 +1,24 @@
-extends layout
+block variables
+doctype html
+html
+    include ./partials/header
 
-block content
-  h1= title
-  p Welcome to #{title}
+    block heading
+        nav#navigation.navbar.navbar-inverse
+            div.container-fixed
+                div.navbar-header
+                    a(href="/").navbar-brand Survey Site
+                ul#navigation.nav.navbar-nav
+                    li
+                        a(href="/create") Create Form
+                    li
+                        a(href="/about") About & Contact
+                    li
+                        a(href="/policy") Privacy Policy
+
+                    li
+                        a(href="/policy") Login
+
+                    li 
+                        style="padding-left:10em"
+                        a(href="/policy") Registration
