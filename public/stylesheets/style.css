@@ -6,3 +6,20 @@ body {
 a {
   color: #00B7FF;
 }
+#header-section {
+	background: url(../images/header.jpg) no-repeat center top;
+	margin-top: -20px;
+	padding-top:20px;
+	text-align:center;
+	background-position: center center;
+	min-height: 700px;
+	width: 100%;	
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}

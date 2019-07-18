@@ -4,6 +4,18 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const mongoose = require('mongoose');
+const User = require('./models/user');
+
+mongoose.connect(
+  `mongodb+srv://assignment2:assignment2@cluster0-1r0am.mongodb.net/test?retryWrites=true&w=majority`,
+  { useNewUrlParser: true }
+);
+
+var db = mongoose.connection;
+db.on('error', err => console.error(err));
+db.once('open', () => console.log('Connected to Mongodb'));
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 

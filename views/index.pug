@@ -1,24 +1,25 @@
-block variables
 doctype html
 html
+  
     include ./partials/header
 
-    block heading
-        nav#navigation.navbar.navbar-inverse
-            div.container-fixed
-                div.navbar-header
-                    a(href="/").navbar-brand Survey Site
-                ul#navigation.nav.navbar-nav
-                    li
-                        a(href="/create") Create Form
-                    li
-                        a(href="/about") About & Contact
-                    li
-                        a(href="/policy") Privacy Policy
+  
 
-                    li
-                        a(href="/policy") Login
-
-                    li 
-                        style="padding-left:10em"
-                        a(href="/policy") Registration
+    <!-- ...........................HOME SECTION......................... -->
+    #header-section
+      .container
+        .row.centered
+          .col-md-8.col-md-offset-2
+            h1 <strong>Hi there!</strong>
+            br
+            br
+            br
+            h2 This is <strong id="name">Survey Site </strong>.You can create your own survey.</h2>
+            br
+            br
+            br
+            br
+            br
+            br
+            br
+            <a class="bounce" href="#about-section">  <img src="images/down.png" alt="down arrow"> </a>
