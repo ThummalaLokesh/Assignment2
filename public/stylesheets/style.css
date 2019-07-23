@@ -1,19 +1,126 @@
+/* 
+    File name = style.css
+    Author's name = Lokesh Thummala
+    web site name = lokesh-thummala-portfolio
+    file description = This file adds styles to my webpage.
+*/
+@charset "UTF-8";
+/* ==========================================================================
+   BODY SECTION
+   ========================================================================== */
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-family:'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #000;   
+    margin-top: 40px;
+    line-height:16px;
 }
 
-a {
-  color: #00B7FF;
+#name {
+    font-family: 'Courgette', cursive;
+    color: #c59e47;
+  }
+/* ==========================================================================
+   HEADERS
+   ========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family:'Open Sans', sans-serif;
+    font-weight: 500;
+    line-height:40px;
+   
 }
+
+h1 {
+    color:#11B674;
+    font-weight: 700;
+}
+.text-center {
+    text-align: center; 
+}
+
+.main-top-margin {
+     margin-top: 75px;
+}
+.main-low-margin {
+     margin-top: 55px;
+}
+
+a,a:hover {
+    text-decoration:none;
+}
+
+p {
+    line-height: 30px;
+    margin-bottom: 23px;
+}
+
+.img-margin-product {
+    margin-top:30px;
+}
+.bottam-pad {
+     padding-bottom:40px;
+}
+.text-justify {
+    text-align:justify;
+}
+/* ==========================================================================
+   Bouncing down arrow. Inspired by https://codepen.io/bitstarr/pen/XjaJGz and I modified to myself.
+   ========================================================================== */
+.bounce {
+    position:relative;
+    bottom: 0;
+        
+    -webkit-animation:bounce 1s infinite;
+    -moz-animation:bounce 1s infinite;
+    -o-animation:bounce 1s infinite;
+    animation:bounce 1s infinite;
+    
+}
+  
+  @-webkit-keyframes bounce {
+    0%       { bottom:0px; }
+    50%      { bottom:15px; }
+    100%     {bottom:30;}
+}
+  
+   @-moz-keyframes bounce {
+    0%       { bottom:0px; }
+    50%      { bottom:15px; }
+    100%     {bottom:30;}
+}
+  
+   @-o-keyframes bounce {
+    0%       { bottom:0px; }
+    50%      { bottom:15px; }
+    100%     {bottom:30;}
+}
+  
+   @keyframes bounce {
+    0%       { bottom:0px; }
+    50%      { bottom:15px; }
+    100%     {bottom:0;}
+}
+/* ==========================================================================
+   COLOR CODES
+   ========================================================================== */
+
+.color-red {
+    color:#ff0000;
+}
+/* ==========================================================================
+   HEADER SECTION
+   ========================================================================== */
+
 #header-section {
-	background: url(../images/main.jpg) no-repeat center top;
+	background: url(../images/header.jpg) no-repeat center top;
 	margin-top: -20px;
 	padding-top:20px;
 	text-align:center;
 	background-position: center center;
 	min-height: 700px;
-	width: 100%;	
+  width: 100%;
     -webkit-background-size: 100%;
     -moz-background-size: 100%;
     -o-background-size: 100%;
@@ -22,4 +129,89 @@ a {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+}
+
+#header-section h1 {
+	margin-top: 120px;
+	color: white;
+	font-size: 65px;
+	font-weight: 900;
+	letter-spacing: 4px;
+    line-height:70px;
+}
+
+#header-section h2 {
+	color: white;
+	font-size: 40px;
+	font-weight: 900;
+  letter-spacing: 4px;
+  background: rgba(0, 0, 0, 0.7 );
+}
+
+/* ==========================================================================
+   ABOUT SECTION
+   ========================================================================== */
+
+#about-section {
+    background-color: #FAFAFA;
+   
+}
+
+
+
+.navbar {
+	font-size: 14px;
+}
+
+.navbar-inverse {
+	background-color: #000000 !important;
+  border-color: #5D5B66;
+}
+
+.navbar-inverse .navbar-nav > .active > a {
+	background: #ffffff;
+}
+
+.navbar-inverse .navbar-brand {
+	color: #ffffff;
+	font-weight: bolder;
+	font-size: 25px;
+    font-weight:900;
+	letter-spacing: 2px;
+}
+.navbar-inverse :hover .navbar-brand:hover {
+	color: #ffffff;	
+}
+.navbar-inverse .navbar-nav > li > a {
+color: #FFFFFF;
+font-size: 20px;
+padding-top: 30px;
+}
+
+/* ==========================================================================
+   Services SECTION
+   ========================================================================== */
+   #services-section {
+    background-color: #FAFAFA;
+   
+}
+
+/* ==========================================================================
+   CONTACT SECTION
+   ========================================================================== */
+
+#contact-section {
+    background-color: #FFFFFF;
+}
+
+/* ==========================================================================
+   FOOTER SECTION
+   ========================================================================== */
+   
+
+#footer {
+    background-color: black; 
+    color: #c59e47; 
+    text-align: center; 
+    padding: 10px 30px 10px 30px;
 }

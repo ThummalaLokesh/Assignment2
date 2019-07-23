@@ -1,36 +1,18 @@
-
 const mongoose = require('mongoose');
- 
-const User = mongoose.model('User', new mongoose.Schema({
-    name: {
-        type: String,
-        required: true,
-        minlength: 5,
-        maxlength: 50
-    },
-    email: {
-        type: String,
-        required: true,
-        minlength: 5,
-        maxlength: 255,
-        unique: true
-    },
-    password: {
-        type: String,
-        required: true,
-        minlength: 5,
-        maxlength: 1024
-    }
-}));
- 
-function validateUser(user) {
-    const schema = {
-        name: Joi.string().min(5).max(50).required(),
-        email: Joi.string().min(5).max(255).required().email(),
-        password: Joi.string().min(5).max(255).required()
-    };
-    
-}
- 
-exports.User = User;
-exports.validate = validateUser;
+const Schema = mongoose.Schema;
+const findorcreate = require('mongoose-findorcreate');
+const passportLocalMongoose = require('passport-local-mongoose');
+
+const userSchema = new Schema({
+  username: String,
+  password: String,
+  googleId: String,
+  githubId: String
+});
+
+userSchema.plugin(findorcreate);
+userSchema.plugin(passportLocalMongoose);
+
+const User = mongoose.model('User', userSchema);
+
+module.exports = User;

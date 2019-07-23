@@ -1,5 +1,5 @@
 head
-    title Lokesh Thummala
+    
 
     <!-- Meta Prerequisites + viewport --> 
     meta(charset='utf-8')
@@ -19,7 +19,7 @@ body
     .navbar.navbar-inverse.navbar-fixed-top
       .container
         .navbar-header
-           <a class="bounce" href="/">  <img src="images/logo.png" alt="down arrow"> </a>
+           <a href="/">  <img src="images/logo1.png" alt="logo"> </a>
         .navbar-collapse.collapse
           ul.nav.navbar-nav.navbar-right
             li
@@ -28,7 +28,11 @@ body
               a(href="/") ABOUT
             li
               a(href="/") CREATE
-            li
-              a(href="/") LOGIN
-            li
-              a(href="/") REGISTRATION
+            if isAuthenticated
+              li
+                a(href="/logout") LOGOUT
+            else
+              li
+                a(href="/login") LOGIN
+              li
+                a(href="/register") REGISTER

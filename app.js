@@ -1,9 +1,14 @@
+require('dotenv').config();
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+const passport = require('passport');
+const session = require('express-session');
+const LocalStrategy = require('passport-local').Strategy;
+const GithubStrategy = require('passport-github').Strategy;
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const mongoose = require('mongoose');
 const User = require('./models/user');
 
@@ -18,6 +23,7 @@ db.once('open', () => console.log('Connected to Mongodb'));
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var authRouter = require('./routes/auth');
 
 var app = express();
 
@@ -31,7 +37,81 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(
+  session({
+    secret: 'kjnhfwkejsdhfjchw3hruy23iyriuwyefkcnskdbchhbf3uhfbubjnjn',
+    resave: false,
+    saveUninitialized: true
+  })
+);
+app.use(passport.initialize()); // Initiaize Passport first
+app.use(passport.session()); // Use passport with session
+
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated();
+  next();
+});
+
+// use static authenticate method of model in LocalStrategy
+passport.use(new LocalStrategy(User.authenticate()));
+
+passport.use(
+  new GithubStrategy(
+    {
+      clientID: process.env.CLIENT_ID,
+      clientSecret: process.env.CLIENT_SECRET,
+      callbackURL: process.env.GITHUB_CALLBACK_URL
+    },
+    function(accessToken, refreshToken, profile, cb) {
+      User.findOne({ githubId: profile.id }, function(err, user) {
+        if (!err && !user) {
+          const newgithub = new User(profile);
+          newgithub.save();
+          return cb(null, newgithub);
+        } else {
+          return cb(err, user);
+        }
+      });
+    }
+  )
+);
+
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: process.env.GOOGLE_CALLBACK_URL
+    },
+    function(accessToken, refreshToken, profile, cb) {
+      console.log(profile);
+      User.findOne({ googleId: profile.id }, function(err, user) {
+        if (!err && !user) {
+          const newgithub = new User({ ...profile, googleId: profile.id });
+          newgithub.save();
+          return cb(null, newgithub);
+        } else {
+          return cb(err, user);
+        }
+      });
+    }
+  )
+);
+// use static serialize and deserialize of model for passport session support
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser((id, done) => {
+  User.findById(id).then(user => {
+    done(null, user);
+  });
+});
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
+
 app.use('/', indexRouter);
+app.use('/', authRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
