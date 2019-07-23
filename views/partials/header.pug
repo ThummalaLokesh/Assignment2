@@ -3,7 +3,7 @@ head
 
     <!-- Meta Prerequisites + viewport --> 
     meta(charset='utf-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+    meta(name='viewport', content='width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1')
 
     <!--MY CUSTOM STYLE -->
     link(rel='stylesheet', href='/stylesheets/style.css')
@@ -16,16 +16,16 @@ head
     
 body
     <!-- .............................NAVIGATION SECTION....................... -->
-    .navbar.navbar-inverse.navbar-fixed-top
+    .navbar.navbar-inverse
       .container
         .navbar-header
            <a href="/">  <img src="images/logo1.png" alt="logo"> </a>
-        .navbar-collapse.collapse
+        .collapse.navbar-collapse
           ul.nav.navbar-nav.navbar-right
             li
-              a(href="#header-section") HOME
+              a(href="/") HOME
             li
-              a(href="/") ABOUT
+              a(href="/about") ABOUT
             li
               a(href="/") CREATE
             if isAuthenticated

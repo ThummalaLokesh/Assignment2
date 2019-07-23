@@ -13,4 +13,8 @@ const requireAuth = (req, res, next) => {
 };
 router.post('*', requireAuth); 
 
+router.get('/about', (req, res) =>
+  res.render('about')
+);
+
 module.exports = router;
