@@ -5,7 +5,7 @@ const User = require('../models/user');
 
 // 1 - Render Login Form
 router.get('/login', (req, res) =>
-  res.render('login', { buttonText: 'Login' })
+  res.render('login', { buttonText: 'Login', title: 'LOGIN' })
 );
 // 2 - Handle Login Form Submission
 router.post(
@@ -16,35 +16,9 @@ router.post(
   })
 );
 
-router.get(`/auth/github`, passport.authenticate('github'));
-
-router.get(
-  `/auth/github/callback`,
-  passport.authenticate('github', { failureRedirect: '/login' }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect('/');
-  }
-);
-
-router.get(
-  `/auth/google`,
-  passport.authenticate('google', {
-    scope: ['profile']
-  })
-);
-
-router.get(
-  `/auth/google/callback`,
-  passport.authenticate('google', {
-    failureRedirect: '/login'
-  }),
-  (req, res) => res.redirect('/')
-);
-
 // 3 - Render Register Form
 router.get('/register', (req, res) =>
-  res.render('login', { buttonText: 'Register' })
+  res.render('login', { buttonText: 'Register', title: 'REGISTER' })
 );
 // 4 - Handle Register Form Submission
 router.post('/register', (req, res) => {
@@ -57,8 +31,10 @@ router.post('/register', (req, res) => {
         return res.render('register', { account: account });
       }
 
+      console.log(err, account)
+
       passport.authenticate('local')(req, res, function() {
-        res.redirect('/');
+        res.redirect('login');
       });
     }
   );

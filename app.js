@@ -1,4 +1,3 @@
-require('dotenv').config();
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -7,8 +6,7 @@ var logger = require('morgan');
 const passport = require('passport');
 const session = require('express-session');
 const LocalStrategy = require('passport-local').Strategy;
-const GithubStrategy = require('passport-github').Strategy;
-const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
 const mongoose = require('mongoose');
 const User = require('./models/user');
 
@@ -55,49 +53,6 @@ app.use((req, res, next) => {
 // use static authenticate method of model in LocalStrategy
 passport.use(new LocalStrategy(User.authenticate()));
 
-passport.use(
-  new GithubStrategy(
-    {
-      clientID: process.env.CLIENT_ID,
-      clientSecret: process.env.CLIENT_SECRET,
-      callbackURL: process.env.GITHUB_CALLBACK_URL
-    },
-    function(accessToken, refreshToken, profile, cb) {
-      User.findOne({ githubId: profile.id }, function(err, user) {
-        if (!err && !user) {
-          const newgithub = new User(profile);
-          newgithub.save();
-          return cb(null, newgithub);
-        } else {
-          return cb(err, user);
-        }
-      });
-    }
-  )
-);
-
-passport.use(
-  new GoogleStrategy(
-    {
-      clientID: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: process.env.GOOGLE_CALLBACK_URL
-    },
-    function(accessToken, refreshToken, profile, cb) {
-      console.log(profile);
-      User.findOne({ googleId: profile.id }, function(err, user) {
-        if (!err && !user) {
-          const newgithub = new User({ ...profile, googleId: profile.id });
-          newgithub.save();
-          return cb(null, newgithub);
-        } else {
-          return cb(err, user);
-        }
-      });
-    }
-  )
-);
-// use static serialize and deserialize of model for passport session support
 passport.serializeUser((user, done) => {
   done(null, user.id);
 });
@@ -107,11 +62,11 @@ passport.deserializeUser((id, done) => {
     done(null, user);
   });
 });
-// passport.serializeUser(User.serializeUser());
+//passport.serializeUser(User.serializeUser());
 // passport.deserializeUser(User.deserializeUser());
 
-app.use('/', indexRouter);
 app.use('/', authRouter);
+app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
