@@ -17,4 +17,22 @@ router.get('/about', (req, res) =>
   res.render('about')
 );
 
+router.get('/create', (req, res) =>
+  res.render('create')
+);
+
+router.get('/formcreated', (req, res) =>
+  res.render('formcreated')
+);
+
+router.get('/preview', (req, res) =>
+  res.render('preview')
+);
+
+router.get('/stats', (req, res) =>
+  res.render('stats')
+);
+
+
+
 module.exports = router;
