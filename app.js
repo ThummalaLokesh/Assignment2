@@ -386,13 +386,7 @@ function setupDb() {
     db1.run("CREATE TABLE IF NOT EXISTS Solutions (Id INTEGER PRIMARY KEY, FormId INTEGER, Answers TEXT, SubmissionBy TEXT)");
 }
 
-let port = 2000;
-let dev = true;
-app.listen(process.env.PORT || 8080, function () {
-    setupDb();
 
-    console.log("Server is listening at localhost:" + port);
-});
 
 
 
