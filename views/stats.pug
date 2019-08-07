@@ -1,34 +1,46 @@
-﻿doctype html
+﻿<!-- 
+    File name = stats.pug
+    Author name = Lokesh Thummala, Huashan, Kengo, Nestor
+    web site name = https://surveys-site.herokuapp.com/
+    file description = This is stats file to the website.  It shows the statistics of survey -->
+doctype html
+doctype html
 html
   
     include ./partials/header
     title STATS
+<!-- ................Stats Page................... -->
+#statsPage
+    .container
+        block content
+            if notSolved == true
+                h3 Nothing here
+                p This form has not been solved yet, would you like to solve it for them?
+                p Visit 
+                    span. 
+                    a(href="/preview/" + formId) this link 
+                    span.
+                        to fill the questionnarie.
 
-.container
-    block content
-        if notSolved == true
-            h3 Nothing here
-            p This form has not been solved yet, would you like to solve it for them?
-            p Visit 
-                span. 
-                a(href="/preview/" + formId) this link 
-                span.
-                    to fill the questionnarie.
-
-        else 
-            h3 Stats for the form id 
-                span.
-                a(href="/preview/" + formId) "#{formId}"
-                
-            div#stats
-                - for (var i = 0; i < solutions.length; i++) {
-                div#item
+            else 
+                h3 Stats for the form id 
+                    span.
+                    a(href="/preview/" + formId) "#{formId}"
                     
-                - }
-                p Number of people answered this survey form are : #{i}
-                p Their names are:
-                - for (var i = 0; i < solutions.length; i++) {
-                div#item
-                    
-                    p.bold= solutions[i].by
-                - }
+                div#stats
+                    - for (var i = 0; i < solutions.length; i++) {
+                    div#item
+                        
+                    - }
+                    p Number of people answered this survey form are : #{i}
+                    p Their names are:
+                    - for (var i = 0; i < solutions.length; i++) {
+                    div#item
+                        
+                        p.bold= solutions[i].by
+                        
+                    - }
+                             
+<!-- ................FOOTER SECTION................... -->
+    #footer
+        p &copy; 2019 | All Right Reserved

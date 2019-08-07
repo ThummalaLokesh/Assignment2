@@ -1,4 +1,9 @@
-﻿doctype html
+﻿<!-- 
+    File name = create.pug
+    Author name = Lokesh Thummala, Huashan, Kengo, Nestor
+    web site name = https://surveys-site.herokuapp.com/
+    file description = This is create a survey file to the website.  -->
+doctype html
 html
   
     include ./partials/header
@@ -6,7 +11,7 @@ html
 
 block variables
   - var questions = 5
-
+<!-- ................Create  Page................... -->
 block content
     .container
         form(action = "/create", method = "POST").form
@@ -46,6 +51,6 @@ block content
                 button(type = "submit")#sbmitBtn.btn.btn-success Generate Form!
             br
 
-    <!-- ................FOOTER SECTION................... -->
+<!-- ................FOOTER SECTION................... -->
     #footer
         p &copy; 2019 | All Right Reserved

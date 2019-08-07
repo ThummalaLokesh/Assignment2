@@ -1,4 +1,9 @@
-﻿doctype html
+﻿<!-- 
+    File name = formcreated.pug
+    Author name = Lokesh Thummala, Huashan, Kengo, Nestor
+    web site name = https://surveys-site.herokuapp.com/
+    file description = This is form created file to the website.  It displays form links after generating form -->
+doctype html
 html
   
     include ./partials/header
@@ -7,17 +12,21 @@ html
 block variables
  - var formLink= "/preview/" + formId
  - var statLink = "/stats/" + formId
+<!-- ................Form created page................... -->
+#formCreated  
+    .container
+        block content
+            h4 Your Form has been created
+            h3 Your survey form id is #{formId}
+            
+            p To see statistics for this form, goto 
+                a(href=statLink) this link
 
-.container
-    block content
-        h4 Your Form has been created
-        h3 Your survey form id is #{formId}
-        
-        p To see statistics for this form, goto 
-            a(href=statLink) this link
-
-        p Your form link is 
-            a(href=formLink) this
-            span.
-                . Copy the link and share your survey. 
+            p Your form link is 
+                a(href=formLink) this
+                span.
+                    . Copy the link and share your survey. 
                 
+<!-- ................FOOTER SECTION................... -->
+    #footer
+        p &copy; 2019 | All Right Reserved

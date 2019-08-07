@@ -1,9 +1,8 @@
 /* 
     File name = style.css
-    Author's name = Lokesh Thummala
-    web site name = lokesh-thummala-portfolio
-    file description = This file adds styles to my webpage.
-*/
+    Author name = Lokesh Thummala, Huashan, Kengo, Nestor
+    web site name = https://surveys-site.herokuapp.com/
+    file description = This is stylesheet file to the website. It has all styles to website.  */
 @charset "UTF-8";
 /* ==========================================================================
    BODY SECTION
@@ -152,25 +151,23 @@ p {
   background: rgba(0, 0, 0, 0.7 );
 }
 
+
+
+/* ==========================================================================
+   ABOUT SECTION
+   ========================================================================== */
+
 #aboutPage{
   
   padding-top: 10%;
   text-align: justify;
   height: -webkit-fill-available;
 }
+
 #aboutPage .container p
 {
   background: rgba(0, 0, 0, 0.8 );
     color: white;
-}
-
-/* ==========================================================================
-   ABOUT SECTION
-   ========================================================================== */
-
-#about-section {
-    background-color: #FAFAFA;
-   
 }
 /* ==========================================================================
    Login Page
@@ -227,7 +224,9 @@ a {
 }
 
 
-
+/* ==========================================================================
+   Edit Page
+   ========================================================================== */
 
 
 #editPage{
@@ -237,6 +236,9 @@ a {
 * {
   box-sizing: border-box;
 }
+/* ==========================================================================
+   Registration Page
+   ========================================================================== */
 
 /* Add padding to containers */
 #register .container {
@@ -328,7 +330,19 @@ a {
 
 .dropdown:hover .dropbtn {background-color: black;}
 
+/* ==========================================================================
+   Formcreated Page
+   ========================================================================== */
 
+#formCreated{
+  height: -webkit-fill-available;
+}
+/* ==========================================================================
+   Stats Page
+   ========================================================================== */
+#statsPage{
+  height: -webkit-fill-available;
+}
 /* ==========================================================================
    NAVIGATION SECTION
    ========================================================================== */

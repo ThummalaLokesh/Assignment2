@@ -1,3 +1,8 @@
+/* 
+    File name = auth.js
+    Author name = Lokesh Thummala, Huashan, Kengo, Nestor
+    web site name = https://surveys-site.herokuapp.com/
+    file description = This is authentication file to the website.  */
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
@@ -52,28 +57,20 @@ router.post('/edit', function(req, res, next){
 
   User.findById(req.user.id, function (err, user) {
 
-      // todo: don't forget to handle err
-
-    
-
-      // good idea to trim 
+      // trimming
 
       var username = req.body.username.trim();
       var password = req.body.password.trim();
       var email =  req.body.email.trim();
       
 
-      // validate 
-      
-
-      // no need for else since you are returning early ^
-     
+       
       user.username = username;
       user.password = password;
       user.email = email;
       user.save(function (err) {
 
-        // todo: don't forget to handle err
+        
 
         res.redirect('/');
       });
