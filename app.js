@@ -181,7 +181,7 @@ app.post("/preview/:formId", function (req, res) {
         var submissionBy = req.body.responseBy;
         var answers = [];
 
-        for (var i = 1; i <= 10; i++) {
+        for (var i = 1; i <= 5; i++) {
             var selection = req.body["question" + i];
 
             var parts = selection.split(',');
@@ -229,7 +229,7 @@ app.get("/stats/:formId", function (req, res) {
                     res.redirect("/error");
                 } else {
                     // Read the questions
-                    var total = 10;
+                    var total =5;
                     var questions = [];
                     for (var i = 0; i < total; i++) {
                         var obj = {

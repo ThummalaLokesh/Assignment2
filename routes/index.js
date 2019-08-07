@@ -17,20 +17,24 @@ router.get('/about', (req, res) =>
   res.render('about')
 );
 
-router.get('/create', (req, res) =>
+router.get('/create', requireAuth, (req, res) =>
   res.render('create')
 );
 
-router.get('/formcreated', (req, res) =>
+router.get('/formcreated', requireAuth, (req, res) =>
   res.render('formcreated')
 );
 
-router.get('/preview', (req, res) =>
+router.get('/preview', requireAuth, (req, res) =>
   res.render('preview')
 );
 
-router.get('/stats', (req, res) =>
+router.get('/stats', requireAuth, (req, res) =>
   res.render('stats')
+);
+
+router.get('/edit', requireAuth, (req, res) =>
+  res.render('edit')
 );
 
 

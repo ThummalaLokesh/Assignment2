@@ -1,0 +1,28 @@
+doctype html
+html
+  
+    include ./partials/header
+    title EDIT
+
+
+    #editPage
+        block content
+            .container
+                h1 Please Enter Your New Details
+
+                form(method="POST")
+                    .form-group
+                        label Username
+                        input.form-control(name="username"  type="text" required='')
+                    .form-group
+                        label Email
+                        input.form-control(name="email" type="email" required='')
+                    .form-group
+                        label Password
+                        input.form-control(name="password" type="password")
+                    
+                    button.btn.btn-primary(type="submit") EDIT
+
+    <!-- ................FOOTER SECTION................... -->
+    #footer
+        p &copy; 2019 | All Right Reserved

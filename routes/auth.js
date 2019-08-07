@@ -18,7 +18,7 @@ router.post(
 
 // 3 - Render Register Form
 router.get('/register', (req, res) =>
-  res.render('login', { buttonText: 'Register', title: 'REGISTER' })
+  res.render('register')
 );
 // 4 - Handle Register Form Submission
 router.post('/register', (req, res) => {
@@ -43,6 +43,40 @@ router.post('/register', (req, res) => {
 router.get('/logout', (req, res) => {
   req.session.destroy(err => {
     res.redirect('/login');
+  });
+});
+
+// 6- Edit profile
+
+router.post('/edit', function(req, res, next){
+
+  User.findById(req.user.id, function (err, user) {
+
+      // todo: don't forget to handle err
+
+    
+
+      // good idea to trim 
+
+      var username = req.body.username.trim();
+      var password = req.body.password.trim();
+      var email =  req.body.email.trim();
+      
+
+      // validate 
+      
+
+      // no need for else since you are returning early ^
+     
+      user.username = username;
+      user.password = password;
+      user.email = email;
+      user.save(function (err) {
+
+        // todo: don't forget to handle err
+
+        res.redirect('/');
+      });
   });
 });
 

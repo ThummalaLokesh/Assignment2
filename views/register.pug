@@ -1,0 +1,42 @@
+doctype html
+html
+  
+    include ./partials/header
+    title REGISTER
+
+
+    #registerPage
+        block content
+            .container
+                h1 Registration Form
+
+                form(method="POST")
+                    #register
+                        .container
+                        
+                            p Please fill in this form to create an account.
+                            hr
+                            label(for='username')
+                                b Username
+                            input(type='text' placeholder='Username' name='username' required='')
+                            label(for='email')
+                                b Email
+                            input(type='text' placeholder='Enter Email' name='email' required='')
+                            label(for='psw')
+                                b Password
+                            input(type='password' placeholder='Enter Password' name='password' required='')
+                            
+                                
+                            hr
+                            
+                            button.registerbtn(type='submit') Register
+                            .container.signin
+                            p
+                                | Already have an account? 
+                                a(href='/login') Sign in
+                                | 
+
+
+    <!-- ................FOOTER SECTION................... -->
+    #footer
+        p &copy; 2019 | All Right Reserved
