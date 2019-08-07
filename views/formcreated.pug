@@ -6,13 +6,16 @@ html
 
 block variables
  - var formLink= "/preview/" + formId
- - var statLink = "/stat/" + formId
+ - var statLink = "/stats/" + formId
 
 .container
     block content
         h4 Your Form has been created
         h3 Your survey form id is #{formId}
         
+        p To see statistics for this form, goto 
+            a(href=statLink) this link
+
         p Your form link is 
             a(href=formLink) this
             span.

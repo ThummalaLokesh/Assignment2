@@ -115,9 +115,7 @@ app.all("/about", function (req, res) {
     res.render("about");
 });
 
-app.all("/policy", function (req, res) {
-    res.render("policy");
-});
+
 
 // /preview?sender_id=12345&form_id=54321
 app.get("/preview/:formId", function (req, res) {

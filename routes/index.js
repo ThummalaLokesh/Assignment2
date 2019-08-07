@@ -17,6 +17,8 @@ router.get('/about', (req, res) =>
   res.render('about')
 );
 
+router.use(requireAuth);
+
 router.get('/create', requireAuth, (req, res) =>
   res.render('create')
 );
