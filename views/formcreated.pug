@@ -6,13 +6,15 @@ html
 
 block variables
  - var formLink= "/preview/" + formId
+ - var statLink = "/stat/" + formId
 
 .container
     block content
         h4 Your Form has been created
-        p Share your form with your friends, and find out who knows you more.
+        h3 Your survey form id is #{formId}
+        
         p Your form link is 
             a(href=formLink) this
             span.
-                . Copy and share.
+                . Copy the link and share your survey. 
                 

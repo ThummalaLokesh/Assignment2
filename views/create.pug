@@ -17,7 +17,7 @@ block content
                 div#userdetails
                     div.form-group
                         label.control-label Your Name:
-                        input(type="text", name="username", placeholder="John Doe" id="username", required).form-control.input-lg
+                        input(type="text", name="username", placeholder="Your Name" id="username", required).form-control.input-lg
                         p Fill in the questions below and submit the form to get the shareable link.
 
                 - for (var question = 1; question <= questions; question++) {
@@ -25,7 +25,7 @@ block content
                 div.span#questions
                     h4.bold= "Question #" + question
                     - var name = "question" + question
-                    input(type="text", name=name, placeholder="Question " + question).form-control.input-lg
+                    input(type="text", name=name, placeholder="Question " + question, required).form-control.input-lg
                     br 
 
                     - var options = 4
@@ -37,7 +37,7 @@ block content
                         div.radio
                             label#q1op1label.radio-inline.control-label
                                 input(type="radio", name=selectedOption, value=option)
-                                input(type="text", name=optionName, placeholder="Question " + question + " option " + option, id=optionName).form-control.expandinginput
+                                input(type="text", name=optionName, placeholder="Question " + question + " option " + option, id=optionName, required).form-control.expandinginput
                     - }
                 - }
 

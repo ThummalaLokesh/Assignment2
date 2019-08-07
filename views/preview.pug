@@ -7,14 +7,16 @@ html
 variables
   - var totalQuestions = 5
 
+
 .container
     block content
         form(method="POST")
             .content
             input(type="hidden", value=Id, name="formId")
             div.span4#headerText
-            h3 How well you know #{userName}?
-            p Start by entering your name, #{userName} can know who knows them best.
+            
+            h3 Answer these survey questions from #{userName}
+            p Start by entering your name,   
 
             input(type="text", name="responseBy", required).form-control.input-lg
 
@@ -42,7 +44,8 @@ variables
             - }
             
             div.span4#Submitbutton
-            button(type="submit").btn.btn-default Submit
+            button(type="submit" ).btn.btn-default Submit
+            
             
             br
             br

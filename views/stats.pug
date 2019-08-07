@@ -15,12 +15,19 @@ block content
                 to fill the questionnarie.
 
     else 
-        h3 Stats for the 
+        h3 Stats for the form id 
             span.
-            a(href="/preview/" + formId) form
+            a(href="/preview/" + formId) #{formId}
             
         div#stats
             - for (var i = 0; i < solutions.length; i++) {
              div#item
-                p.bold= solutions[i].by + " — " + solutions[i].corrects + "/15."
+                
+            - }
+            p Number of people answered this survey form are : #{i}
+            p Their names are:
+            - for (var i = 0; i < solutions.length; i++) {
+             div#item
+                
+                p.bold= solutions[i].by
             - }
